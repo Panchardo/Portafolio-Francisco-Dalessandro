@@ -1,0 +1,25 @@
+
+COMO AÑADIR USER Y PASSWORD AL MQTT POR PANCHARDO
+
+1- ABRIR LA TERMINAL
+
+2- PONER SUDO SU 
+
+3- PONER ESTE COMANDO:  mosquitto_passwd -c passwordfile galileo
+
+4- PONER LA CONTRASEÑA galileo123 ---- > ESTE ES EL USUARIO (galileo) Y CONTRASEÑA DEL ARDUINO (galileo123)
+
+5- PARA AGREGAR NUEVOS USUARIOS: mosquitto_passwd -b passwordfile [usuario] [contraseña]
+
+6- PARA BORRAR USUARIOS: mosquitto_passwd -D passwordfile [usuario]
+
+7- DECIRLE AL mosquitto.conf QUE LEA EL PASSWORDFILE. PARA ELLO PEGAR ESTO ASI TAL CUAL(usar nano mosquitto.conf): 
+
+allow_anonymous false
+password_file /etc/mosquitto/passwordfile
+
+8- SIEMPRE AL MODIFICAR EL PASSWORDFILE, REINICIAR MOSQUITTO CON: sudo systemctl restart mosquitto Y CHEQUEAR QUE ANDE CON sudo systemctl status mosquitto
+
+9- SUBIR EL ARCHIVO arduino_mqtt_dht.ino Y RECORDAR CAMBIAR LA IP DEL SERVIDOR PARA EL DE LA FACU
+
+10- PROFIT
